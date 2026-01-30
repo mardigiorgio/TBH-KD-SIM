@@ -15,19 +15,18 @@ END_TIME = 10.0
 
 
 def pendulum_dynamics(state):
-    """Compute state derivative: [theta_dot, omega_dot]"""
+    """Compute state derivative: θ̇ = ω, ω̇ = -(g/L)sin(θ)"""
     theta, omega = state
     theta_dot = omega
     omega_dot = -(GRAVITY / PENDULUM_LENGTH) * np.sin(theta)
     return np.array([theta_dot, omega_dot])
 
 
-# Initial conditions
+# Initial conditions: 45 degrees, at rest
 initial_theta = np.pi / 4
 initial_omega = 0.0
 state = np.array([initial_theta, initial_omega])
 
-# Run simulation
 current_time = 0.0
 state_history = [state.copy()]
 
